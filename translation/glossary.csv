@@ -1,0 +1,68 @@
+japanese,english,notes
+ワンナイトマッチ,One Night Match,mode
+ワンナイトトーナメント,One Night Tournament,mode
+オープンリーグ,Open League,mode
+イリミネーション,Elimination,mode: Elimination Match (5-on-5 team battle)
+バトルロイヤル,Battle Royal,mode
+ヴィクトリーロード,Victory Road,mode
+エディット,Edit,Edit Mode; Wrestler Edit; Edit Promotion
+タイトルマッチ,Title Match,mode
+ネットワーク,Network,mode (not translated beyond its name)
+ドリームパスポート,DreamPassport,Sega's browser
+メモリーカード,Memory Card,the VMU
+クイックセーブ,Quick Save,
+クイックロード,Quick Load,
+ノーマルマッチ,Normal Match,match type
+金網爆破デスマッチ,Exploding Cage Deathmatch,match type
+有刺鉄線デスマッチ,Barbed Wire Deathmatch,match type
+グルーサムファイティング,Gruesome Fighting,"match type (S used Gruesome Fight where short); vale tudo-style rules"
+ＳＷＡ公式ルール,SWA Rules,match type: SWA Official Rules Match = SWA Rules Match
+バーリトゥード,Vale Tudo,
+団体,Promotion,a wrestling company (Edit Promotion)
+レフェリー,Referee,
+青コーナー,Blue Corner,
+赤コーナー,Red Corner,
+試合形式,Match Type,
+試合時間,Time Limit,
+試合本数,Falls,"一本勝負 = 1 Fall, 三本勝負 = 2 out of 3 Falls"
+試合会場,Venue,
+場外カウント,Ring-Out Count,
+反則カウント,Foul Count,
+ロープチェック,Rope Break,
+ランバージャック,Lumberjack,
+トルネードバトル,Tornado Battle,
+カットプレイ,Cut Play,
+オンリーフォール,Pin Only,
+オンリーギブアップ,Submission Only,
+ヘビー級,Heavyweight,
+ジュニアヘビー級,Junior Heavyweight,Jr. Heavyweight where short
+チャンピオン,Champion,
+ベルト,Belt,
+闘いの記録,Battle Record,a saved record of a series of matches
+レスラーセレクト,Wrestler Select,
+オーダーセレクト,Order Select,
+自動進行,Auto Advance,
+総当たり戦,Round Robin,
+勝ち抜き戦,Knockout,
+クリティカル,Critical,Fire Pro's knockout-blow system
+返し技,Reversal,
+呼吸法,Breathing,
+回復力,Recovery,
+ファイトスタイル,Fighting Style,
+必殺技,Finisher,the wrestler's finishing move
+がぶり,Front Headlock,position: がぶり攻撃 = Front Headlock Attack
+マウント,Mount,
+バックマウント,Back Mount,
+エプロン,Apron,
+場外,Outside,outside the ring
+フォール,Pinfall,
+ギブアップ,Submission,
+リングアウト,Ring Out,
+反則,DQ,disqualification (勝ち/負け: DQ Win / DQ Loss)
+時間切れ,Time Up,
+引き分け,Draw,
+コスチューム,Costume,
+リネーム,Rename,
+ショートネーム,Short Name,
+ロングネーム,Long Name,
+ニックネーム,Nickname,

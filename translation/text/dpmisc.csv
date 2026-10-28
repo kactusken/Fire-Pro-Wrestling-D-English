@@ -1,0 +1,9 @@
+# Small network-mode texts (NTP.DPS labels, the local start and help pages): exact pieces of
+# each file, replaced in the build. Printable ASCII.
+file,japanese,english,notes
+/DPETC/NTP.DPS,現在の時刻,Current Time,
+/DPETC/NTP.DPS,接続経過時間,Connection Time,
+/DPWWW/INDEX.HTML,ファイヤープロレスリングD ホームページ,Fire Pro Wrestling D Home Page,
+/DPWWW/HELP/INDEX.HTML,ファイヤープロレスリングD ホームページ,Fire Pro Wrestling D Home Page,
+/DPWWW/HELP/INDEX.HTML,Lトリガーを押してメニューにあるホームを選択してください。,Press the L Trigger and select Home from the menu.,
+/DPWWW/HELP/INDEX.HTML,１０秒後に自動的にホームに戻ります。,Returning to Home automatically in 10 seconds.,

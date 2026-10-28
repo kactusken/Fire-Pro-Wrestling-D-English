@@ -1,0 +1,5 @@
+# Exact package versions; .venv is rebuilt from this file. After changing requirements.txt:
+# .venv/bin/pip install -r requirements.txt && .venv/bin/pip freeze > requirements.lock
+capstone==5.0.9
+numpy==2.5.4
+pillow==13.0.0

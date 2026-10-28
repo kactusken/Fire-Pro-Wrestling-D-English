@@ -1,0 +1,67 @@
+# Strings written in place in 1ST_READ.BIN (fixed fields): max_bytes is a hard limit.
+# Printable ASCII only, no #.
+offset,ram,refs,max_bytes,japanese,english,notes
+0xb36cc,0x8c0c36cc,0,11,ｼｽﾃﾑﾃﾞｰﾀ,System Data,save-file label: max 15 bytes (VMU 16 / file manager 32)
+0xb36d8,0x8c0c36d8,0,27,ﾌｧｲﾔｰﾌﾟﾛﾚｽﾘﾝｸﾞD - ｼｽﾃﾑﾃﾞｰﾀ,Fire Pro D - System Data,save-file label: max 31 bytes (VMU 16 / file manager 32)
+0xb36f4,0x8c0c36f4,0,11,ｴﾃﾞｨｯﾄﾀﾞﾝﾀｲ,Edit Promo,save-file label: max 15 bytes (VMU 16 / file manager 32)
+0xb3700,0x8c0c3700,0,31,ﾌｧｲﾔｰﾌﾟﾛﾚｽﾘﾝｸﾞD - ｴﾃﾞｨｯﾄ団体,Fire Pro D - Edit Promotion,save-file label: max 31 bytes (VMU 16 / file manager 32)
+0xb3720,0x8c0c3720,0,11,ﾘﾈｰﾑﾃﾞｰﾀ,Rename Data,save-file label: max 15 bytes (VMU 16 / file manager 32)
+0xb372c,0x8c0c372c,0,27,ﾌｧｲﾔｰﾌﾟﾛﾚｽﾘﾝｸﾞD - ﾘﾈｰﾑﾃﾞｰﾀ,Fire Pro D - Rename Data,save-file label: max 31 bytes (VMU 16 / file manager 32)
+0xb3748,0x8c0c3748,0,11,ｺｽﾁｭｰﾑﾃﾞｰﾀ,Costumes,save-file label: max 15 bytes (VMU 16 / file manager 32)
+0xb3754,0x8c0c3754,0,31,ﾌｧｲﾔｰﾌﾟﾛﾚｽﾘﾝｸﾞD - ｺｽﾁｭｰﾑﾃﾞｰﾀ,Fire Pro D - Costume Data,save-file label: max 31 bytes (VMU 16 / file manager 32)
+0xb3774,0x8c0c3774,0,11,ｴﾃﾞｨｯﾄﾚｽﾗｰ,Wrestlers,save-file label: max 15 bytes (VMU 16 / file manager 32)
+0xb3780,0x8c0c3780,0,31,ﾌｧｲﾔｰﾌﾟﾛﾚｽﾘﾝｸﾞD - ｴﾃﾞｨｯﾄﾚｽﾗｰ,Fire Pro D - Edit Wrestlers,save-file label: max 31 bytes (VMU 16 / file manager 32)
+0xb37a0,0x8c0c37a0,0,7,ﾜｻﾞﾃﾞｰﾀ,Moves,save-file label: max 15 bytes (VMU 16 / file manager 32)
+0xb37a8,0x8c0c37a8,0,27,ﾌｧｲﾔｰﾌﾟﾛﾚｽﾘﾝｸﾞD - ﾜｻﾞﾃﾞｰﾀ,Fire Pro D - Move Data,save-file label: max 31 bytes (VMU 16 / file manager 32)
+0xb37c4,0x8c0c37c4,0,11,ﾈｯﾄﾜｰｸﾃﾞｰﾀ,Network,save-file label: max 15 bytes (VMU 16 / file manager 32)
+0xb37d0,0x8c0c37d0,0,31,ﾌｧｲﾔｰﾌﾟﾛﾚｽﾘﾝｸﾞD - ﾈｯﾄﾜｰｸﾃﾞｰﾀ,Fire Pro D - Network Data,save-file label: max 31 bytes (VMU 16 / file manager 32)
+0x11920e,0x8c12920e,0,17,パンサー鳥取,<Tottori>,referee: surname only (config slot ~110 px); owner list 2026-10-28: Panther Tottori / Tiger Hattori
+0x1192ac,0x8c1292ac,0,17,佐賀公平,<Saga>,referee: surname only (config slot ~110 px); owner list 2026-10-28: Kohei Saga / Kyohei Wada
+0x11934a,0x8c12934a,0,17,バット若部,<Wakabe>,referee: surname only (config slot ~110 px); owner list 2026-10-28: Pat Wakabe / Ted Tanabe
+0x1193e8,0x8c1293e8,0,17,今田修司,<Imada>,referee: surname only (config slot ~110 px); owner list 2026-10-28: Shuji Imada / Yuji Shimada
+0x119486,0x8c129486,0,17,ラーク・ケスラー,<Kessler>,referee: surname only (config slot ~110 px); owner list 2026-10-28: Lark Kessler / Earl Hebner
+0x119524,0x8c129524,0,17,久我山大気,<Kugayama>,referee: surname only (config slot ~110 px); owner list 2026-10-28: Hiroki Kugayama / Daichi Murayama
+0x1195c2,0x8c1295c2,0,17,Mr.水中,<Mizunaka>,referee: surname only (config slot ~110 px); owner list 2026-10-28: Mr. Mizunaka / Mister Soranaka
+0x119660,0x8c129660,0,17,ジョー弘,<Hiroshi>,referee: surname only (config slot ~110 px); owner list 2026-10-28: Joe Hiroshi / Joe Higuchi
+0x1188d8,0x8c1288d8,0,25,ＶＩＥＷ　ＪＡＰＡＮ,<VIEW JAPAN>,"promotion name (header box ~11 letters, uppercase like the originals) 0"
+0x1188f2,0x8c1288f2,0,25,ＯＬＩＶＥ　ＪＡＰＡＮ,<OLIVE JAPAN>,"promotion name (header box ~11 letters, uppercase like the originals) 1"
+0x11890c,0x8c12890c,0,25,ＳＵＰＥＲ　ＮＯＶＡ,<SUPER NOVA>,"promotion name (header box ~11 letters, uppercase like the originals) 2"
+0x118926,0x8c128926,0,25,新生ＩＷ,<NEW IW>,"promotion name (header box ~11 letters, uppercase like the originals) 3"
+0x118940,0x8c128940,0,25,ゆきぐにプロレス,<YUKIGUNI PRO>,"promotion name (header box ~11 letters, uppercase like the originals) 4"
+0x11895a,0x8c12895a,0,25,超竜館,<CHORYUKAN>,"promotion name (header box ~11 letters, uppercase like the originals) 5"
+0x118974,0x8c128974,0,25,ＺＩＰ　ＪＡＰＡＮ,<ZIP JAPAN>,"promotion name (header box ~11 letters, uppercase like the originals) 6"
+0x11898e,0x8c12898e,0,25,関西プロレス,<KANSAI PRO>,"promotion name (header box ~11 letters, uppercase like the originals) 7"
+0x1189a8,0x8c1289a8,0,25,ＦＲＥＥ,FREE,"promotion name (header box ~11 letters, uppercase like the originals) 8"
+0x1189c2,0x8c1289c2,0,25,ＷＦＷプロレス,<WFW PRO>,"promotion name (header box ~11 letters, uppercase like the originals) 9"
+0x1189dc,0x8c1289dc,0,25,ＷＷＣプロレス,<WWC PRO>,"promotion name (header box ~11 letters, uppercase like the originals) 10"
+0x1189f6,0x8c1289f6,0,25,ＴＨＲＥＥ－Ａ,<THREE-A>,"promotion name (header box ~11 letters, uppercase like the originals) 11"
+0x118a10,0x8c128a10,0,25,ゴングス,<GONGS>,"promotion name (header box ~11 letters, uppercase like the originals) 12"
+0x118a2a,0x8c128a2a,0,25,ハイクラス,<HIGH CLASS>,"promotion name (header box ~11 letters, uppercase like the originals) 13"
+0x118a44,0x8c128a44,0,25,格闘探検隊バトレーション,<BATTLATION>,"promotion name (header box ~11 letters, uppercase like the originals) 14"
+0x118a5e,0x8c128a5e,0,25,格闘家,FIGHTERS,"promotion name (header box ~11 letters, uppercase like the originals) 15"
+0x118a78,0x8c128a78,0,25,女子,WOMEN,"promotion name (header box ~11 letters, uppercase like the originals) 16"
+0x118a92,0x8c128a92,0,25,ＬＥＧＥＮＤ,LEGEND,"promotion name (header box ~11 letters, uppercase like the originals) 17"
+0x118aac,0x8c128aac,0,13,ＶＪＰ,<VJP>,promotion short name (3-6 letters) 0
+0x118aba,0x8c128aba,0,13,ＯＪＰ,<OJP>,promotion short name (3-6 letters) 1
+0x118ac8,0x8c128ac8,0,13,ＮＯＶＡ,<NOVA>,promotion short name (3-6 letters) 2
+0x118ad6,0x8c128ad6,0,13,新生ＩＷ,<IW>,promotion short name (3-6 letters) 3
+0x118ae4,0x8c128ae4,0,13,ゆきプロ,<YUKI>,promotion short name (3-6 letters) 4
+0x118af2,0x8c128af2,0,13,超竜館,<CHORYU>,promotion short name (3-6 letters) 5
+0x118b00,0x8c128b00,0,13,ＺＩＰ,<ZIP>,promotion short name (3-6 letters) 6
+0x118b0e,0x8c128b0e,0,13,関西,<KANSAI>,promotion short name (3-6 letters) 7
+0x118b1c,0x8c128b1c,0,13,ＦＲＥＥ,FREE,promotion short name (3-6 letters) 8
+0x118b2a,0x8c128b2a,0,13,ＷＦＷ,<WFW>,promotion short name (3-6 letters) 9
+0x118b38,0x8c128b38,0,13,ＷＷＣ,<WWC>,promotion short name (3-6 letters) 10
+0x118b46,0x8c128b46,0,13,Ｔ－Ａ,<T-A>,promotion short name (3-6 letters) 11
+0x118b54,0x8c128b54,0,13,ゴングス,<GONGS*>,promotion short name (3-6 letters) 12
+0x118b62,0x8c128b62,0,13,ハイクラス,<HCLASS>,promotion short name (3-6 letters) 13
+0x118b70,0x8c128b70,0,13,バトレ,<BATTLE>,promotion short name (3-6 letters) 14
+0x118b7e,0x8c128b7e,0,13,格闘家,FIGHT,promotion short name (3-6 letters) 15
+0x118b8c,0x8c128b8c,0,13,女子,WOMEN,promotion short name (3-6 letters) 16
+0x118b9a,0x8c128b9a,0,13,ＬＥＧ,LEG,promotion short name (3-6 letters) 17
+0x11d672,0x8c12d672,0,13,スパイク,Spike,built-in edit wrestler: name1
+0x11d680,0x8c12d680,0,19,四郎,Shiro,built-in edit wrestler: name2
+0x11d694,0x8c12d694,0,25,不死鳥の如く,Like a Phoenix,built-in edit wrestler: nickname
+0x11d8bc,0x8c12d8bc,0,17,ヴァイル・バンカー,Vile Bunker,ヴァイル record (unknown use)
+0x11d8f8,0x8c12d8f8,0,17,ヴァイル四郎,Vile Shiro,"ヴァイル record, referee-like (unknown use)"
+0x130a9c,0x8c140a9c,0,25,ファイヤープロレスリングＤ,Fire Pro Wrestling D,game title in a save header (unknown use)
