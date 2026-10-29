@@ -37,8 +37,16 @@ VARIANTS = [
      'The English translation, with the real names of the wrestlers the characters stand for.'),
     (f'{paths.GAME_FILE} (English) (Parody Names)', ['--names', 'parody', '--unlocks', 'none'],
      "The English translation, with the game's own parody names for the wrestlers."),
-    # (f'{paths.GAME_FILE} (English) (All Unlocked)', ['--unlocks', 'all'], 'The English translation with every unlock.'),
-    # (f'{paths.GAME_FILE} (Japan) (All Unlocked)', ['--no-translation', '--unlocks', 'all'], 'The original game with every unlock.'),
+    (f'{paths.GAME_FILE} (English) (Real Names) (All Unlocked)', ['--names', 'real', '--unlocks', 'all'],
+     'The Real Names translation with everything unlocked from the start: what L+R+Y at the main menu or '
+     'winning every Victory Road title opens (Credits, the full edit limit, all elimination teams), plus '
+     'the 100 downloadable moves and the 50 downloadable wrestlers built in (no memory card needed).'),
+    (f'{paths.GAME_FILE} (English) (Parody Names) (All Unlocked)', ['--names', 'parody', '--unlocks', 'all'],
+     'The Parody Names translation with everything unlocked from the start, the 100 downloadable moves and '
+     'the downloadable wrestlers built in.'),
+    (f'{paths.GAME_FILE} (Japan) (All Unlocked)', ['--no-translation', '--unlocks', 'all'],
+     'The original Japanese game with everything unlocked from the start, the 100 downloadable moves and '
+     'the downloadable wrestlers built in.'),
 ]
 
 # Cartridge ROMs get BPS patches (tools/bps.py, standard library; patchers check the source CRC32),

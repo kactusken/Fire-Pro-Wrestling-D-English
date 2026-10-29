@@ -19,9 +19,13 @@ file system starts in track 3: the PVD and the directories are there, along with
 and about 44,000 zero sectors. Every other file is on track 50, so track 50 is the project's
 image. A build also writes its own copy of track 3 (the directory records, plus any file moved
 into the padding), and a release has a second patch when that copy changed. SBL.BIN grows by
-777 sectors (six picture entries recompress a few KB larger and move to its end); 1ST_READ.BIN,
-right after it, has 149 free sectors behind it - so the build moves 1ST_READ.BIN (808 sectors) to
-track 3 and SBL.BIN grows in place (`disc.py` `_make_room`). The game boots from there (*seen
+about 260 sectors (six picture entries recompress a few KB larger; 198, 206 and 244 move to its
+end, and 245-247 shift down into the space 244 left, `tools/sbl.py` `put`) - *verified in game: the Victory Road Congratulations screen from the moved entries, (All Unlocked) build, 2026-10-28*, and by 302 more in
+the (All Unlocked) builds (the downloadable moves, entry 370): 561 in all. 1ST_READ.BIN, right
+after it, has 149 free sectors behind it - so the build moves 1ST_READ.BIN (808 sectors) to
+track 3 and SBL.BIN grows in place (`disc.py` `_make_room`); the room behind SBL.BIN is then 957
+sectors. When SBL.BIN outgrows that, the build relocates all of it to track 3 and that track's
+patch carries the whole archive (70 MB) - `make_patches.py` sizes show it. The game boots from there (*seen
 headless, Flycast HLE BIOS, 2026-10-28*), and the patches stay ~1 MB each instead of 70 MB. Details:
 [PLATFORM.md](PLATFORM.md). *Verified: control build identical, 2026-10-27.*
 
@@ -132,6 +136,36 @@ takes 23,151 bytes of it (2026-10-27). Fixed fields (save labels, referees) are 
 The roster goes into SBL entries 1 and 2, the move names into entry 1 (both recompressed).
 Text in pictures: the main menu labels, the wrestler profile tags, the elimination order boards and
 the result banners are PVR textures (graphics.csv, tools/gfx.py).
+
+## Wrestler records
+*Checked against the editor screens, 2026-10-28.* Each built-in wrestler is 504 bytes (SBL.BIN
+entry 2; the first 504 bytes of a 640-byte edit record are the same). `tools/fprecord.py` decodes
+them for the guide:
+- +0x00 class, +0x02/+0x10/+0x24 names and nickname, +0x3E height, +0x3F weight, +0x40 origin,
+  +0x41..+0x43 birthday (year - 1900, 0xFF unknown), +0x44 promotion, +0x45 style, +0x46 reversal,
+  +0x47..+0x4C recovery/breathing/spirit with their bleeding values, +0x4D..+0x50 durability,
+  +0x51/+0x52 speed and climb speed (stored 3-7), +0x53 climb/run up, +0x54 critical, +0x55 theme
+  (shown + 1), +0x56/+0x58 voices (a sample id; the tone is its range, table 0x8C12E05C),
+  +0x5A stance, +0x5B size, +0x5C skill, +0x5D..+0x72 the 22 Param Edit ratings (stored 3-12, shown 1-10).
+- +0x74: 78 move slots (u16: bits 0-11 the move, 0x800 a downloadable move; 0x1000 signature move
+  (at most four), 0x2000 finisher, 0x4000/0x8000 voice 1/2 with the move). Record order is not Move
+  Edit's: table 0x8C12EE6C maps screen rows to slots, 0x8C12F640 holds their button glyphs.
+- +0x110..+0x1CF: CPU Logic. 20 situations (table 0x8C1302B0) with conditions; each condition
+  stores cumulative percentages for its actions (the last gets the rest of 100). Action codes
+  below 0x100 are move slots; 0x200+ are plain actions, whip and the style's grapple/counter reply
+  (table 0x8C1303A0). Traits and Other are one byte each (+0x1BD..+0x1C0, +0x1CD..+0x1CF).
+- +0x1D0..+0x1F7: the four costumes (not decoded).
+
+### Move Edit lists
+*From the data, 2026-10-28* (every list matches the slots the 220 wrestlers use its moves in, and
+its moves' names). The move ids are grouped by kind, and Move Edit offers each slot one of 43 lists:
+- 0x8C12EB8C: 43 x (u32 pointer to u16 move ids, u16 count, u16 another list also offered, or
+  0xFFFF). The chain makes a heavier slot take the lighter moves too: strong grapples (list 12)
+  -> medium (11) -> weak (10); the same for standing strikes (2 -> 1 -> 0) and from behind
+  (15 -> 14 -> 13). Some lists start with move 0 (none).
+- 0x8C12ECE4: 78 bytes by record slot, the list for that slot (Stand X 0, Grapple B 12, the taunts
+  24, ...). Back Rev X and A have two lists with the same moves.
+`tools/guidedata.py` reads both for the guide's Moves tab (`LIST_TITLES` names them).
 
 ## Network mode (DreamPassport 3)
 *Seen headless in Flycast, 2026-10-28 (offline: the browser, its menus, Options, Mail, Chat, the soft

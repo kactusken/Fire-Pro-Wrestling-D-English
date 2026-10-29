@@ -1,0 +1,54 @@
+# The built-in downloadable wrestlers (Spike's edit set, Ext Data 4): each wrestler's finisher name as shown on the profile.
+# It is free text in the edit record (not the move table), written in the English builds only.
+# Room: the profile line, ~362 px (rooms.csv). <Tokens> are the build's real or parody names.
+index,wrestler,japanese,english,notes
+0,2 Cold Scorpio,スーパー・タランチュラ・スプラッシュ,Super Tarantula Splash,
+1,Onryo,亡霊クラッチ,Ghost Clutch,the move table's name
+2,N.Mar ufuji,不知火,Shiranui,
+3,Kanda Yasushi,ドルフィンＤエルボードロップ,<Dolphin> Elbow Drop,the move table's name
+4,S.Moc hizuki,ハワイアンクラッシャー,Hawaiian Crusher,the move table's name
+5,Kaoru Uno,胴絞めチョークスリーパーホールド,Scissor Choke Sleeper,the move table's name
+6,Gary Goodridge,剛力ラッシュ,Power Rush,剛力 = mighty strength
+7,Kenzo Suzuki,急降下バックドロップ,Plunging Backdrop,the move table's name
+8,Candy Okutsu,ムーンサルトプレス,Moonsault Press,the move table's name
+9,Araya Nobutaka,ムーンサルトプレス,Moonsault Press,the move table's name
+10,Akira Shoji,腕ひしぎ逆十字固め,Cross Armbreaker,the move table's name
+11,Mark Coleman,マウントヘッドバット,Mount Headbutt,the move table's name
+12,Steve Wright,ロメロスペシャル,Romero Special,the move table's name
+13,Barry Windham,必殺ジャーマンスープレックス,Killer German Suplex,必殺 = finishing/killer
+14,Valent ijn O.,変速キック,Hensoku Kick,変速 = a change-of-pace kick; kept the Japanese word
+15,Vande rlei S.,馬乗りナックルアロー,Straddle Knuckle,the move table's name
+16,Randy Couture,馬乗りナックルアロー,Straddle Knuckle,the move table's name
+17,Scotty 2 Hotty,Ｔｈｅ　Ｗｏｒｍ,The Worm,
+18,GM Sexay,ヒップホップドロップ,Hip Hop Drop,
+19,T.Mori shima,アメイズインパクト,Amaze Impact,
+20,Takash i Sugiura,ウメムラズ・リフト,Umemura's Lift,
+21,Sanae Kikuta,肩固め,Arm Triangle,the move table's name
+22,Ikuhis a Minowa,腕ひしぎ逆十字固め,Cross Armbreaker,the move table's name
+23,Seiji Sakaguchi,アルゼンチンバックブリーカー,Argentine Rack,the move table's name
+24,Masa Saito,ぶっこ抜きバックドロップ,Lift-Up Backdrop,the move table's name
+25,Killer Khan,ダイビングダブルニードロップ,Diving Double Knee,the move table's name
+26,Yatsu Yoshiaki,ワンダースープレックス,Wonder Suplex,
+27,Ashura Hara,ヒットマンラリアット,Hitman Lariat,
+28,Wajima Hiroshi,ヤジマスペシャル,Yajima Special,
+29,Dick Murdoch,長滞空垂直落下式ブレーンバスター,Delayed Vert Buster,the move table's name
+30,Ted Dibiase,ミリオンダラーバスター,Million Dollar Buster,the move table's name
+31,Allen Bad News,オクラホマスタンピート,Oklahoma Stampede,the move table's name
+32,Bob Backlund,チキンウィングフェイスロック,Chickenwing Facelock,the move table's name
+33,Bubba Ray,３Ｄ,3D,
+34,D-Von Dudley,リバースブレーンバスター,Reverse Brainbuster,the move table's name
+35,TAJIRI,バズソーキック,Buzzsaw Kick,
+36,Silver King,ハリウッドスタープレス,Hollywood Press,the move table's name
+37,J.Guer rera,ゆきぐにドライバー２,<Yukiguni> Driver 2,the move table's name
+38,Gamma,ボンバ・スラッシュ,Bomba Slash,
+39,Daio QUALLT,ジャイアントチョークスラム,Giant Chokeslam,the move table's name
+40,Tsubas a,トルナド・デ・アカプルコ,Tornado de Acapulco,
+41,Black Buffalo,バンガロー・ドライバー,Bungalow Driver,
+42,N.Hos hikawa,スベシャル流星キック,Special Meteor Kick,スベシャル is a typo for スペシャル in the edit
+43,Jeff Hardy,Ｔｗｉｓｔ　ｏｆ　Ｆａｔｅ,Twist of Fate,
+44,Matt Hardy,Ｔｗｉｓｔ　Ｏｆ　Ｆａｔｅ,Twist of Fate,
+45,Rey Mi sterio Jr,ダイビングネックブリーカードロップ,Diving Neckbreaker,the move table's name
+46,Usuda Katsumi,脇固め,Fujiwara Armbar,the move table's name
+47,Norio Honaga,ジャンピングネックブリーカードロップ,Leaping Neckbreaker,the move table's name
+48,Wolf Hawkfield,ジャイアントスイング,Giant Swing,the move table's name
+49,Zangie f,スクリューパイルドライバー,Screw Piledriver,

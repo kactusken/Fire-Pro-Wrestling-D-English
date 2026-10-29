@@ -53,7 +53,14 @@ MAX_COUNT = None      # a hard limit for every string, in count() units (None: n
 
 
 def encoded_length(text):
-    """Bytes the build will store for `text` - change to match the build (e.g. 2 per char for full-width)."""
+    """Bytes the build will store for `text`: name tokens resolved, the longer of the two builds."""
+    import fpdtext
+    if fpdtext.TOKEN.search(text):
+        try:
+            return max(len(fpdtext.resolve(text, v, tokens=_tokens()).encode('ascii', 'replace'))
+                       for v in ('real', 'parody'))
+        except SystemExit:
+            pass
     return len(text.encode('ascii', 'replace'))
 
 

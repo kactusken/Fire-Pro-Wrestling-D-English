@@ -48,7 +48,10 @@ REFEREES = (0x11920C, 0x9E, 8, 2, 18)          # first record, stride, count, na
 FIXED_MORE = [(0x11D672, 14, 'built-in edit wrestler: name1'), (0x11D680, 20, 'built-in edit wrestler: name2'),
               (0x11D694, 26, 'built-in edit wrestler: nickname'), (0x11D8BC, 18, 'ヴァイル record (unknown use)'),
               (0x11D8F8, 18, 'ヴァイル record, referee-like (unknown use)'),
-              (0x130A9C, 26, 'game title in a save header (unknown use)')]
+              (0x130A9C, 26, 'game title in a save header (unknown use)'),
+              # ring names already in English in the original (Ring setting); real names by token
+              (0xB2974, 12, 'ring name'), (0xB2980, 12, 'ring name'), (0xB298C, 16, 'ring name'),
+              (0xB29B8, 12, 'ring name'), (0xB29E8, 8, 'ring name'), (0xB2A24, 4, 'ring name')]
 PROMOTIONS = ((0x1188D8, 0x1A, 18, 26, 'promotion name (header box ~11 letters, uppercase like the originals)'),
               (0x118AAC, 0x0E, 18, 14, 'promotion short name (3-6 letters)'))
 ROSTER_ENTRIES = ((2, 0), (1, 0x14))            # (SBL entry, offset of record 0 in its data)

@@ -33,6 +33,7 @@ import codepatch  # noqa: E402
 import disc  # noqa: E402
 import dpnet  # noqa: E402
 import dptex  # noqa: E402
+import dlc  # noqa: E402
 import fpdtext  # noqa: E402
 import gfx  # noqa: E402
 import image  # noqa: E402
@@ -41,7 +42,35 @@ import paths  # noqa: E402
 # Gameplay patches: (group, file, address, original, new, description) - see tools/codepatch.py.
 # Groups named debug-* are developer extras (debug menus, cheat windows): never in "all" or the
 # default, only when named, never in a release variant.
+# The debug-* groups each change the start-up jump (the word at 0x8C015AB8 that normally points to
+# the game loop 0x8C0913C4) to boot into one of the program's unreached test menus - one at a time
+# (docs/HIDDEN_CONTENT.md, docs/PATCHES.md).
+_BOOT = 0x8C015AB8
 CODE_PATCHES = [
+    # The save's unlock flag (save + 0x43FC, 13 extra elimination teams) and progress level (+0x43FD:
+    # Credits in Options at 1+, the edit limit 150/200/250/300, an edit colour option at 3) are
+    # set by L+R+Y at the main menu or by clearing Victory Road titles, and read only through these
+    # two getters: each now returns the full value (rts; mov #N,r0). docs/PATCHES.md "Unlock all".
+    ('unlocks', '/1ST_READ.BIN', 0x8C015C04, 0x911BD313, 0xE001000B, 'unlock flag always on (extra elimination teams)'),
+    ('unlocks', '/1ST_READ.BIN', 0x8C015C12, 0x9115D310, 0xE003000B, 'progress level always 3 (credits, edit limit 300, colours)'),
+    # The downloadable moves and the downloadable wrestlers (Spike's edit set), read from a new SBL.BIN entry on cold boot
+    # (tools/dlc.py; the routine replaces the never-called match overlay 0x8C030A80, the hook is
+    # the cold-boot jump to the card autoload). docs/PATCHES.md "Downloadable moves".
+    ('dlc', '/1ST_READ.BIN', dlc.ROUTINE_AT, bytes.fromhex('e62fd62fc62fb62fa62f962f862ffbffebffdbffcbff224fd87f47d38390326d46d2dc011821228d226c45d17c90126344d23e03282309897790de03'),
+     bytes.fromhex('224f08d008d509d40b40090008d109d265e3166002221043fb8f0472264f06d02b4009002c2e018c604b1d8c72010000acb6268c8cba1b8cd8e3038c'), 'boot routine: load the built-in downloadable moves and roster'),
+    ('dlc', '/1ST_READ.BIN', dlc.HOOK, dlc.AUTOLOAD, dlc.ROUTINE_AT, None),
+    # Save guard: Memory Card > Save won't overwrite a file on a card unless that file was loaded
+    # from (or saved to) that same card - e.g. a card put in after power-on (tools/dlc.py,
+    # docs/PATCHES.md "Save guard"). The message is replaced by the Japanese one in the Japanese build.
+    ('saveguard', '/1ST_READ.BIN', dlc.GUARD_AT, bytes.fromhex('33600988028b709000e3360d3cd16b9012623dd32e00382009896790de020172260d23600a88028b609000e2260d5c9036dbdd035b9036de350d01e35690de023732258b1de50b4b00e432d30b4e362f1ee50b4b00e44b904b9adc02ff70dc3a262fdc03362fa184a063084008400c33a28418400c33a3841840084008400c33'),
+     dlc.guard('english'), 'save guard: no overwriting a file that was not loaded from that card'),
+    ('saveguard', '/1ST_READ.BIN', dlc.GUARD_LITERAL, dlc.FIND_FILE, dlc.GUARD_AT, None),
+    ('debug-scene-select', '/1ST_READ.BIN', _BOOT, 0x8C0913C4, 0x8C0A954C, 'boot into the scene select (10 = the game)'),
+    ('debug-test-menu', '/1ST_READ.BIN', _BOOT, 0x8C0913C4, 0x8C0A9688, 'boot into the test menu (flag test, EffectView...)'),
+    ('debug-editor-select', '/1ST_READ.BIN', _BOOT, 0x8C0913C4, 0x8C04B9B4, 'boot into ONE NIGHT MATCH / DOT EDITOR / RENAME TEST'),
+    ('debug-bup-select', '/1ST_READ.BIN', _BOOT, 0x8C0913C4, 0x8C01435C, 'boot into BUP TEST / RING VIEW'),
+    ('debug-model-test', '/1ST_READ.BIN', _BOOT, 0x8C0913C4, 0x8C0A8A48, 'boot into the model viewer'),
+    ('debug-sound-test', '/1ST_READ.BIN', _BOOT, 0x8C0913C4, 0x8C0A9390, 'boot into the sound test'),
 ]
 UNLOCK_GROUPS = sorted({p[0] for p in CODE_PATCHES})
 PLAYER_GROUPS = [g for g in UNLOCK_GROUPS if not g.startswith('debug-')]
@@ -53,6 +82,8 @@ BOOT_PATCHES = {
 
 def to_offset(name, addr):
     """GAME-SPECIFIC: file offset of a RAM address in file `name` (overlay base, ELF segments, ...)."""
+    if name == '/1ST_READ.BIN':                 # loaded at 0x8C010000 (docs/PLATFORM.md)
+        return addr - 0x8C010000
     raise SystemExit(f'build.py to_offset(): no address mapping for {name} yet')
 
 
@@ -179,10 +210,17 @@ def main(argv=None):
                     continue
                 step(paths.TRANSLATION / rel, files)
 
-        codepatch.apply(files, CODE_PATCHES, args.unlocks, to_offset)
+        patches = CODE_PATCHES
+        if args.no_translation:     # the save guard's message in Japanese
+            patches = [p[:4] + (dlc.guard('japanese'),) + p[5:] if p[0] == 'saveguard' and p[2] == dlc.GUARD_AT
+                       else p for p in CODE_PATCHES]
+        codepatch.apply(files, patches, args.unlocks, to_offset)
 
         if not args.no_translation:
             images_step(files)
+
+        if 'dlc' in args.unlocks:
+            dlc.step(files, english=not args.no_translation, names=NAMES)
 
         if args.boot:
             codepatch.apply(files, [(args.boot, *p, f'TEST BUILD: boots into {args.boot}') for p in BOOT_PATCHES[args.boot]],

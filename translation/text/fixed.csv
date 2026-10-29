@@ -65,3 +65,9 @@ offset,ram,refs,max_bytes,japanese,english,notes
 0x11d8bc,0x8c12d8bc,0,17,ヴァイル・バンカー,Vile Bunker,ヴァイル record (unknown use)
 0x11d8f8,0x8c12d8f8,0,17,ヴァイル四郎,Vile Shiro,"ヴァイル record, referee-like (unknown use)"
 0x130a9c,0x8c140a9c,0,25,ファイヤープロレスリングＤ,Fire Pro Wrestling D,game title in a save header (unknown use)
+0xb2974,0x8c0c2974,0,11,VIEW JAPAN,<VIEW JAPAN>,ring name (Ring setting): real name in the real build
+0xb2980,0x8c0c2980,0,11,OLIVE JAPAN,<OLIVE JAPAN>,ring name (Ring setting): real name in the real build
+0xb298c,0x8c0c298c,0,15,SUPER NOVA,<SUPER NOVA>,ring name (Ring setting): real name in the real build
+0xb29b8,0x8c0c29b8,0,11,ZIP JAPAN,<ZIP JAPAN>,ring name (Ring setting): real name in the real build
+0xb29e8,0x8c0c29e8,0,7,THREE-A,<THREE-A>,ring name (Ring setting): real name in the real build
+0xb2a24,0x8c0c2a24,0,3,UWH,<UWH>,ring name (Ring setting): real name in the real build
