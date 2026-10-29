@@ -185,10 +185,54 @@ its moves' names). The move ids are grouped by kind, and Move Edit offers each s
   main); +0x23 flags: 0x80 illegal, 0x40 submission hold, 0x01 can cause a critical (the Finisher
   type), 0x02 striking, 0x04 suplex, 0x08 submission, 0x10 power, 0x20 technical critical.
   +0x1C (a class shared by similar moves) and +0x1D..+0x22 (probably the attacker's own damage,
-  FPW's self-damage) are not confirmed. How a match turns these base values into damage (the
-  ratings against the defence ratings) is in code not yet traced: `0x8C048D20` finds a wrestler's
-  move block (via the id table) and returns GS+0x10; the entry is loaded whole at 0x8C7AC2E0
-  (pointer at 0x8C26D0A4).
+  FPW's self-damage) is not confirmed. `0x8C048D20` finds a wrestler's move block (via the id
+  table) and returns GS+0x10; the entry is loaded whole at 0x8C7AC2E0 (pointer at 0x8C26D0A4).
+- GS+0x1C: the "attack lowered" flags (8 neck, 4 arm, 2 back, 1 leg): the attacker's own damage in
+  that part lowers the move's damage (below).
+
+### Damage, skills and criticals in a match (from the code, 2026-10-28)
+Each wrestler's match state has the record pointer at +0x114, state flags at +0x120 (0x80000 the
+move is his finisher, 0x100000 a signature move, 0x08 bleeding, 0x01000000 gave up), the skill flags
+at +0x124, and u16 meters out of 0xFFFF: +0x128 stamina, +0x12A spirit, +0x12C breath, +0x12E
+neck, +0x130 arm, +0x132 back, +0x134 leg (higher = healthier). The finisher counter is +0x1D0.
+
+**Damage** (0x8C0274E0..0x8C0277B8; A = attacker, D = defender, ratings as stored, 3-12):
+- main/sub attack = A's ratings in the move's attack types (+0x1A), +2 for the finisher, +1 for a
+  signature move, +1 Fast Start (A stamina > 0xB333), +2 Fightback (A stamina < 0x0500), +3
+  Hardcore with a weapon; main/sub defence = D's ratings in the defence types (+0x1B), +3 for a
+  Hardcore defender against a weapon.
+- damage = base x (3 x main attack + sub attack - 3 x main defence - sub defence + 64) x 4 / 256,
+  then x table[D stamina / 0x2000] / 256 (0x8C12A26C: 192 ... 256, a worn-out defender takes up to
+  25% less), x table[A breath / 0x2000] / 256 (0x8C12A27C: 224 ... 256), x table[A part / 0x2000]
+  / 256 for each "attack lowered" part (0x8C12A28C: 192 ... 256), x size table / 256 (0x8C12A2A2,
+  4x4 attacker x defender size: 6.25% a step, Men S/M/L, Women), x 288/256 for Throw or Power
+  moves when D's +0x1D9 is set, x 281/256 Bleeding (A bleeding), x 307/256 Star Power (taunt flag
+  0x10000 and A stamina < 0x0A00), x 2.5 One-Hit KO (the finisher, counter < 2), x the match's
+  damage setting (+0x1478 of *(0x8C26D048)) / 256.
+
+**Skills**: record +0x5C indexes a 22-entry u32 table at 0x8C12C1FC that is ORed into +0x124:
+Star Power 0x100, Quick Return 0x200, Comeback 0x400, Fast Start 0x800, Guts 0x1000, Fightback
+0x2000, One-Hit KO 0x4000, Bleeding 0x8000, Hardcore 0x4000000, Focus 0x8000000, Flexibility
+0x10000000, Hard Body 0x20000000; the 25/35-point skills are their sums (Superstar 0x4100, Rampage
+0xA00, Last Gasp 0x600, Fury 0x2200, Insight 0x8000400, Toukon 0x2500, Monster 0x10004100 = Star
+Power + One-Hit KO + Flexibility, Desperation 0x3400, Ishin 0x28001000). Besides the damage terms:
+Guts (0x8C027D2E) - when spirit damage in a submission hold (move flag 0x40) would take spirit
+below 0, the wrestler gives up only if a random 0-4 is 0; Hard Body (0x8C021CE2) - a hit below
+0x1400 (+0x182) doesn't set the state that ordinary wrestlers get from any hit; Quick Return is
+tested at 0x8C0214E4 (its thresholds not traced); Comeback, Focus, Flexibility: criticals, below.
+
+**Criticals** (0x8C0277C8..0x8C0279A6): the attacker's critical type (record +0x54) indexes 0x8C12C55E
+[1, 2, 4, 8, 16, 32], tested against the move's flags (+0x23); type 0 needs the move to be the
+finisher and flag 0x01. So the stored types are 0 Finisher, 1 striking, 2 suplex, 3 submission, 4
+power, 5 technical (the built-in roster agrees: Misawa and the kickboxers 1, Jumbo and Karelin 2,
+the Gracies and Fujiwara 3, Vader and Andre 4, Fujinami and Gran Hamada 5) - but Skill Edit
+lists them Finisher, Suplex, Power, Technical, Striking, Submission and stores the cursor position
+(*seen headless, 2026-10-28*), so its names don't match the effect (in the original game too).
+Chance: three table lookups (0x8C12A68E by critical type and style, 0x8C12A6E2, 0x8C12A742 by the
+victim's stamina) x 100 per mille, 50 if the victim has Focus and the type is striking, submission
+or technical, 25 if he has Flexibility and it is finisher, suplex or power; x 2 for a Comeback
+attacker (stamina < 0x1900, spirit > 0x4C00); the Critical % rule halves it (Low) or doubles it
+(High), None turns criticals off.
 - A downloadable move (FIREPROD.Wnn, `tools/dlc.py`) is u16 its Move Edit list, u16 its slot
   number, the name (+8, 44 bytes), then one GS block of the same layout at +0x34. *From the data:*
   the list matches every slot the downloadable wrestlers equip one in.

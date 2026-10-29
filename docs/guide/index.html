@@ -781,6 +781,8 @@ figure.pad-diagram { margin: 18px 0 26px; max-width: 880px; }
       <ol>
         <li><a href="#edit-looks">Base Model, Name, Looks</a></li>
         <li><a href="#edit-skill">Skill Edit</a></li>
+        <li><a href="#edit-skills">Skills</a></li>
+        <li><a href="#edit-critical">Critical Types</a></li>
         <li><a href="#edit-param">Param Edit</a></li>
         <li><a href="#edit-moves">Move Edit</a></li>
         <li><a href="#edit-logic">CPU Logic</a></li>
@@ -1193,7 +1195,7 @@ figure.pad-diagram { margin: 18px 0 26px; max-width: 880px; }
     <tr><td>Promotion, Class, Height (150-220 cm), Weight (40-250 kg), Year, Month, Day, Origin (32 countries)</td><td>Class: Heavyweight, Jr Heavy, Free</td><td>0</td></tr>
     <tr><td><b>Style</b></td><td>Orthodox, Technician, Wrestling, Ground, Power, American, Junior, Luchador, Heel, Mystery, Shooter, Fighter, Grappler, <span class="nm" data-k="panther">Tiger</span>, Giant, Devilish</td><td>0</td></tr>
     <tr><td><b>Reversal</b></td><td>The styles above (without Wrestling and Ground), plus All-Round</td><td>0</td></tr>
-    <tr><td><b>Critical</b></td><td>Finisher, Suplex, Power, Technical, Striking, Submission</td><td>0, 20, 20, 25, 30, 30</td></tr>
+    <tr><td><b>Critical</b></td><td>Finisher, Suplex, Power, Technical, Striking, Submission (see <a href="#edit-critical">what they really do</a>)</td><td>0, 20, 20, 25, 30, 30</td></tr>
     <tr><td><b>Skill</b></td><td>None; Star Power, Quick Return, Comeback, Fast Start, Guts, Fightback, One-Hit KO, Bleeding, Hardcore, Focus, Flexibility, Hard Body; Superstar, Rampage, Last Gasp, Fury, Insight; Toukon, Monster, Desperation, Ishin</td><td>0; 15 each; 25 each; 35 each</td></tr>
     <tr><td><b>Recovery</b>, <b>Breathing</b>, <b>Spirit</b></td><td>three levels each</td><td>0, 6, 12</td></tr>
     <tr><td>... <b>(Bleeding)</b> versions</td><td>the same, while bleeding</td><td>0, 3, 6</td></tr>
@@ -1205,6 +1207,44 @@ figure.pad-diagram { margin: 18px 0 26px; max-width: 880px; }
     <tr><td><b>Voice 1/2 Tone</b>, <b>Type</b></td><td>Japanese, Foreign, Female voices; a voice number</td><td>0</td></tr>
   </table></div>
   </div>
+  <h3 id="edit-skills">Skills</h3>
+  <p>Each wrestler has one skill. The twelve 15-point skills each do one thing; the 25- and 35-point skills are those same effects combined. "Stamina" and "spirit" below are the wrestler's own, unless it says the opponent's.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Skill</th><th>Points</th><th>What it does</th></tr>
+    <tr><td><b>Star Power</b></td><td>15</td><td>Below 4% stamina, after a taunt: his moves do 20% more damage.</td></tr>
+    <tr><td><b>Quick Return</b></td><td>15</td><td>Gets up much faster when his stamina is low but his spirit is still high (about 5-20% stamina with 60% spirit or more).</td></tr>
+    <tr><td><b>Comeback</b></td><td>15</td><td>Below 10% stamina with more than 30% spirit: twice the chance to land a critical.</td></tr>
+    <tr><td><b>Fast Start</b></td><td>15</td><td>Above 70% stamina: +1 to the attack ratings behind every move he does.</td></tr>
+    <tr><td><b>Guts</b></td><td>15</td><td>When a submission hold drains his spirit to zero, he gives up only one time in five instead of every time.</td></tr>
+    <tr><td><b>Fightback</b></td><td>15</td><td>Below 2% stamina: +2 to the attack ratings behind every move.</td></tr>
+    <tr><td><b>One-Hit KO</b></td><td>15</td><td>His finisher does 2.5 times its damage, the first two times he hits it in a match.</td></tr>
+    <tr><td><b>Bleeding</b></td><td>15</td><td>While he is bleeding, his moves do about 10% more damage.</td></tr>
+    <tr><td><b>Hardcore</b></td><td>15</td><td>With a weapon: +3 to his attack ratings. Hit with one: +3 to his defence ratings.</td></tr>
+    <tr><td><b>Focus</b></td><td>15</td><td>Half as likely to suffer a critical from a Striking, Submission or Technical opponent (the engine's types: see below).</td></tr>
+    <tr><td><b>Flexibility</b></td><td>15</td><td>A quarter as likely to suffer a critical from a Finisher, Suplex or Power opponent.</td></tr>
+    <tr><td><b>Hard Body</b></td><td>15</td><td>Small moves don't leave him open to a pin: only a big hit does.</td></tr>
+    <tr><td><b>Superstar</b></td><td>25</td><td>Star Power and One-Hit KO.</td></tr>
+    <tr><td><b>Rampage</b></td><td>25</td><td>Quick Return and Fast Start.</td></tr>
+    <tr><td><b>Last Gasp</b></td><td>25</td><td>Quick Return and Comeback.</td></tr>
+    <tr><td><b>Fury</b></td><td>25</td><td>Quick Return and Fightback.</td></tr>
+    <tr><td><b>Insight</b></td><td>25</td><td>Comeback and Focus.</td></tr>
+    <tr><td><b>Toukon</b></td><td>35</td><td>Star Power, Comeback and Fightback. Antonio Inoki's "fighting spirit".</td></tr>
+    <tr><td><b>Monster</b></td><td>35</td><td>Star Power, One-Hit KO and Flexibility. Jumbo Tsuruta's nickname.</td></tr>
+    <tr><td><b>Desperation</b></td><td>35</td><td>Comeback, Guts and Fightback. Kinnikuman's last-ditch strength.</td></tr>
+    <tr><td><b>Ishin</b></td><td>35</td><td>Guts, Focus and Hard Body. Riki Choshu's Ishin army spirit.</td></tr>
+  </table></div>
+  <h3 id="edit-critical">Critical Types: What They Really Do</h3>
+  <p>A wrestler's critical type decides which moves can knock an opponent out with a critical. The game's Skill Edit lists the six types in a different order from the one the game uses in a match, so the name it shows is not what the type does. The name below is what each choice really does; the built-in wrestlers are set up by what it does (Misawa and the kickboxers show "Suplex", the Gracies show "Technical").</p>
+  <div class="tablewrap"><table>
+    <tr><th>Skill Edit shows</th><th>In a match, criticals come from</th><th>For example</th></tr>
+    <tr><td>Finisher</td><td>The finisher only</td><td>Most of the roster</td></tr>
+    <tr><td>Suplex</td><td>Striking moves</td><td>Mitsuharu Misawa, Toshiaki Kawada, Peter Aerts</td></tr>
+    <tr><td>Power</td><td>Suplexes</td><td>Jumbo Tsuruta, Gary Albright, Rick Steiner</td></tr>
+    <tr><td>Technical</td><td>Submissions</td><td>Antonio Inoki, Yoshiaki Fujiwara, Rickson Gracie</td></tr>
+    <tr><td>Striking</td><td>Power moves</td><td>Vader, Andre the Giant, Kevin Nash</td></tr>
+    <tr><td>Submission</td><td>Technical moves (ranas, roll-ups, cradles)</td><td>Tatsumi Fujinami, Osamu Kido, Gran Hamada</td></tr>
+  </table></div>
+  <p>A wrestler set to Finisher can score a critical only with his finisher; every other type only with moves of its kind. A move's own critical type is on its card in <a href="#reference">Wrestlers and Moves</a>.</p>
   <h3 id="edit-param">Param Edit</h3>
   <p>Eleven attack and eleven defence ratings, 1-10, one point per step: Punch, Kick, Throw, Lock, Choke, Power, Agility, Strength, Atk Tech, Rough, MMA Atk; Strike Def, Kick Def, Throw Def, Lock Def, Choke Def, Aerial Def, Slam Def, vs Lariat, Def Tech, vs Rough, MMA Def. <b>Hold <kbd class="btn btn-a">A</kbd> and press <kbd>Right</kbd> or <kbd>Left</kbd></b> to change a rating; <kbd>Left</kbd>/<kbd>Right</kbd> alone switch columns.</p>
   <h3 id="edit-moves">Move Edit</h3>
@@ -1368,7 +1408,7 @@ figure.pad-diagram { margin: 18px 0 26px; max-width: 880px; }
   <h4 id="faq-reversed">Why do my big moves get reversed?</h4>
   <p>The opponent is still too fresh. Strong moves only work once he's worn down: use weak and medium moves first (<a href="#strategy-match">Winning a Match</a>).</p>
   <h4 id="faq-critical">How do I win by critical?</h4>
-  <p>There is no button for it. Each wrestler has a critical type (Finisher, Suplex, Power, Technical, Striking or Submission); moves of that type can end the match on the spot, more often with the Critical % rule set high (<a href="#controls-critical">Criticals</a>).</p>
+  <p>There is no button for it. Each wrestler has a critical type, and moves of that kind can end the match on the spot, more often with the Critical % rule set high. The names Skill Edit shows for the types are mixed up: see <a href="#edit-critical">Critical Types</a>.</p>
   <h4 id="faq-online">Can I play online?</h4>
   <p>No. The game never had online matches: Network Mode was for the web browser and for downloading moves and uploading wrestlers, and those services are long closed (<a href="#mode-network">Network Mode</a>). Up to four players can play on one console.</p>
   <h4 id="faq-emulator">Does the translation work on an emulator?</h4>
@@ -1775,6 +1815,9 @@ figure.pad-diagram { margin: 18px 0 26px; max-width: 880px; }
     [13, 'Off the top rope'], [17, 'Grapple'], [30, 'Behind the opponent'], [36, 'Reversal (opponent behind you)'],
     [38, 'Downed opponent'], [47, 'Corner'], [50, 'Team moves'], [56, 'Mount'], [60, 'Front headlock'], [64, 'Back mount'],
     [68, 'Corner dive'], [70, 'Apron and top-rope reversals'], [74, 'Taunts']];
+  // Skill Edit's critical names are shuffled against what the types do in a match (docs/TECHNICAL.md)
+  const CRIT_REAL = { Finisher: 'finisher only', Suplex: 'strikes', Power: 'suplexes', Technical: 'submissions', Striking: 'power moves', Submission: 'technical moves' };
+  const critReal = v => CRIT_REAL[v] && v !== 'Finisher' ? `${v} (criticals from ${CRIT_REAL[v]})` : v;
   const FACTS = ['Class', 'Style', 'Reversal', 'Critical', 'Skill', 'Stance', 'Theme'];
   // a slot label with its buttons as Dreamcast chips: "Grapple X+Up" -> Grapple (X)+Up
   const keys = label => /^Top Rev/.test(label) ? esc(label) : esc(label)
@@ -1782,7 +1825,7 @@ figure.pad-diagram { margin: 18px 0 26px; max-width: 880px; }
     .replace(/(^|[\s+])([LR])(?=$|[\s+:])/g, (m, pre, k) => `${pre}<kbd>${k}</kbd>`);
   function renderCard(e) {
     const facts = [['Hometown', e.o || ''], ['Height', e.h ? e.h + ' cm' : ''], ['Weight', e.w ? e.w + ' kg' : ''], ['Birthday', e.b || '']]
-      .concat(e.pr ? FACTS.map(l => [l, skv(e, l)]) : []).filter(f => f[1] !== '');
+      .concat(e.pr ? FACTS.map(l => [l, l === 'Critical' ? critReal(skv(e, l)) : skv(e, l)]) : []).filter(f => f[1] !== '');
     card.innerHTML = `<div class="pc"><div class="pc-frame">
       <div>
         <p class="pc-promo">${esc(promo(e.p))}${e.community ? ' <span class="dl-tag">Downloadable wrestler</span>' : ''}</p>
