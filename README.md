@@ -10,13 +10,47 @@ browser. The menu buttons, profile tags, result banners and the browser's 13 she
 keyboard keys are redrawn as English pictures. The game's text area was repacked to make room for
 the English, and the browser's compressed (VQ) textures are re-encoded after redrawing.
 
-**[See screenshots](docs/SCREENSHOTS.md)** of the patched game. **[Read the guide](https://kactusken.github.io/Fire-Pro-Wrestling-D-English/guide/)**: controls, every mode, Edit Mode, all 220 wrestlers and 1,000 moves, and the secrets.
+**The downloadable content is built in.** In 2001-2002 Spike offered new moves and wrestlers that
+players downloaded through the Dreamcast's modem onto a memory card. The servers are long gone.
+The (All Unlocked) patches put all of it in the game: [100 downloadable moves and 50 downloadable
+wrestlers](#the-downloadable-content-built-in), ready from the first boot with no memory card or
+save files needed.
+
+**[See screenshots](docs/SCREENSHOTS.md)** of the patched game. **[Read the guide](https://kactusken.github.io/Fire-Pro-Wrestling-D-English/guide/)**: controls, every mode, Edit Mode, all 220 wrestlers, the 50 downloadable ones and every move, and the secrets.
 
 > **Status: v1.0, complete.** Tested in Flycast over several rounds, including every Victory Road
 > ending. The network mode could only be checked offline: Sega's servers are gone, so the online
 > pages can't be reached. Loading saves made with the Japanese game hasn't been tested yet. Please
 > report anything that looks wrong ([how to report](#reporting-problems)).
 > [CHANGELOG.md](CHANGELOG.md) lists what's in each release.
+
+## The downloadable content, built in
+
+Through its network mode, Fire Pro Wrestling D let players download new moves and Spike's own
+edit wrestlers onto a memory card.
+With the servers shut down, that content survived only as memory card files passed around by
+fans. The **(All Unlocked)** patches make it part of the game:
+
+- **100 downloadable moves** (W00-W99). W00-W56 are the official downloads Spike released;
+  W57-W99 were backported from *Fire Pro Wrestling Z* by the Fire Pro community, some fixed so
+  they can finish a match. They are at the end of Move Edit's lists, in red. The six moves named in Japanese have English names in the English patches.
+- **50 downloadable wrestlers**, the edit wrestlers Spike released, each in their promotion on
+  the wrestler select screen: 2 Cold Scorpio, Naomichi Marufuji, Tajiri, Rey Mysterio Jr., the
+  Hardys and the Dudleys, Mark Coleman and Randy Couture, Ted DiBiase, Bob Backlund, Barry
+  Windham, Seiji Sakaguchi, Killer Khan... and Zangief. Their finishers are in English in the
+  English patches.
+- **No memory card needed.** Everything loads at every boot. Your own edit wrestlers in groups
+  1-3 load beside the downloadable wrestlers, which sit in edit group 4 (Ext Data 4); your own
+  Ext Data 4 file replaces them. To build on one of them, use Edit Wrestler > Save/Load > Quick
+  Load > Ext Data 4, then Quick Save into another group.
+- **Your saves stay safe.** These patches won't save over a file on a card unless that file was
+  loaded from it ("Can't overwrite: load it first."), so insert your memory card before switching
+  on.
+
+Thanks to the Fire Pro community for preserving the downloads and for the backports. Every
+downloadable move and wrestler is in the [guide](https://kactusken.github.io/Fire-Pro-Wrestling-D-English/guide/),
+with full profiles and move lists. With the other patches, the moves still load from a memory card
+holding the move files, as on the original.
 
 ## Downloads
 
@@ -26,7 +60,7 @@ Get the latest zip from the [Releases](../../releases) page. It contains 5 patch
 |---|---|
 | **Fire Pro Wrestling D (English) (Real Names)** | The translation, with the real names of the wrestlers the characters stand for. |
 | **Fire Pro Wrestling D (English) (Parody Names)** | The translation, with the game's own parody names for the wrestlers. |
-| **Fire Pro Wrestling D (English) (Real Names) (All Unlocked)** | Real Names with everything unlocked from the start, plus the 100 downloadable moves and the 50 downloadable wrestlers built in (see [below](#notes-for-players)). |
+| **Fire Pro Wrestling D (English) (Real Names) (All Unlocked)** | Real Names with everything unlocked from the start, plus the 100 downloadable moves and the 50 downloadable wrestlers built in ([above](#the-downloadable-content-built-in)). |
 | **Fire Pro Wrestling D (English) (Parody Names) (All Unlocked)** | The same, with Parody Names. |
 | **Fire Pro Wrestling D (Japan) (All Unlocked)** | The original Japanese game with the same unlocks and downloads. |
 
@@ -67,16 +101,8 @@ a `.cue`. Then:
 - **Network mode.** The browser, its settings, mail, chat and the upload form are in English, but
   the servers it connected to were shut down long ago.
 - **(All Unlocked) patches.** Everything that winning every Victory Road title (or L+R+Y at the
-  main menu) opens is open from the start: Credits, the full edit limit, all elimination teams.
-  They also have the 100 downloadable moves and the 50 downloadable wrestlers built in, so no
-  memory card is needed: moves W00-W56 and the wrestlers are what Spike released for download,
-  and moves W57-W99 were backported from Fire Pro Wrestling Z by the Fire Pro community (some fixed
-  so they can finish a match). The wrestlers are in edit group 4 (Ext Data 4), so your own edit
-  wrestlers in groups 1-3 load beside them (your own Ext Data 4 file replaces them). Thanks to the
-  Fire Pro community for preserving the downloads and for the backports. To build on one of the
-  wrestlers, use Edit Wrestler > Save/Load > Quick Load > Ext Data 4, then Quick Save into another
-  group. Insert your memory card before switching on: these patches won't save over a file
-  on a card unless that file was loaded from it ("Can't overwrite: load it first.").
+  main menu) opens is open from the start: Credits, the full edit limit, all elimination teams,
+  plus [the downloadable content](#the-downloadable-content-built-in).
 - **Hidden content.** See [docs/HIDDEN_CONTENT.md](docs/HIDDEN_CONTENT.md).
 
 ## Reporting problems

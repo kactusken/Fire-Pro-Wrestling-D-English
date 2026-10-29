@@ -167,6 +167,19 @@ its moves' names). The move ids are grouped by kind, and Move Edit offers each s
   24, ...). Back Rev X and A have two lists with the same moves.
 `tools/guidedata.py` reads both for the guide's Moves tab (`LIST_TITLES` names them).
 
+### Move data
+- SBL.BIN entry 150 (LZSS, 1,158,628 bytes): 3200 (u32 offset, u32 size) pairs, then 'GS' blocks,
+  one per move (the motion and the move's settings). u16 table 0x8C1346C4 by move id gives the move's
+  first block. *Verified in game, 2026-10-28:* the byte at GS+0x1A is the move's main attack type
+  (high nibble) and sub attack type (low nibble), indexes into Punch, Kick, Throw, Lock, Choke,
+  Power, Agility, Strength, Atk Tech, Rough, MMA Atk - Move Edit's box shows them (American Jab
+  0x09 = Punch / Rough, Straight 0x00 = Punch / Punch). The number beside each in that box is the
+  wrestler's own rating in the type, and Aff a grade of how the move suits him; the move holds
+  no level. The rest of the block (damage, timing, the motion) is not decoded.
+- A downloadable move (FIREPROD.Wnn, `tools/dlc.py`) is u16 its Move Edit list, u16 its slot
+  number, the name (+8, 44 bytes), then one GS block of the same layout at +0x34. *From the data:*
+  the list matches every slot the downloadable wrestlers equip one in.
+
 ## Network mode (DreamPassport 3)
 *Seen headless in Flycast, 2026-10-28 (offline: the browser, its menus, Options, Mail, Chat, the soft
 keyboard and the connect dialogs; nothing past the dial-up).* Network Mode > Home Page starts Sega's
@@ -199,10 +212,11 @@ The online pages (registration, mail and chat servers) came from Sega's servers 
 
 ## Prior art
 Searched 2026-10-27:
-- An "English patched" image of this game circulates on ROM sites (CDRomance, RetroGameTalk
-  repo, updated 2025-03-08). The listings name neither the author nor what is translated, and
-  point to a dreamcast-talk.com thread (forum f=22, t=5814) that refuses automated access. Its
-  scope and format are unknown.
+- An English translation by Irvgotti452, released in 2012 (owner, 2026-10-28), circulates as an
+  "English patched" image on ROM sites (CDRomance, RetroGameTalk repo, updated 2025-03-08),
+  pointing to a dreamcast-talk.com thread (forum f=22, t=5814). This project does not build on
+  it: a fresh translation of all the text, move and wrestler names included, as a standalone
+  patch, with the downloadable content built in.
 - No technical documentation of this game's formats was found (Data Crystal, TCRF).
 - CodeBreaker codes exist (Almar's Guides), for example an unlock for the New Japan wrestlers.
   These are RAM addresses to compare with the code later.
