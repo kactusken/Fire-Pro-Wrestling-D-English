@@ -44,6 +44,10 @@ SLOT_LIST = 0x8C12ECE4                    # 78 bytes by record slot: the list Mo
 MOVE_BLOCK = 0x8C1346C4                   # u16 by move id: its first block in SBL entry 150
 MOVE_DATA = 150                           # SBL entry: (offset, size) pairs, then one 'GS' block per move
 GS_TYPES = 0x1A                           # in a GS block: main attack type << 4 | sub attack type
+GS_STATS = (0x12, 0x13, 0x18, 0x14, 0x15, 0x16, 0x17, 0x1A, 0x1B, 0x23, 0x19)
+# stamina, spirit, breath, neck, arm, back, leg damage; attack types; defence types; flags
+# (0x80 illegal, 0x40 submission hold, critical 0x01 any/finisher, 0x02 striking, 0x04 suplex,
+# 0x08 submission, 0x10 power, 0x20 technical); bleed chance (docs/TECHNICAL.md "Move data")
 DL_GS = 0x34                              # a downloadable move: u16 list, u16 slot, name, then its GS block
 # The lists' names in the guide, by list index (what the moves in each list are)
 ATTACK_TYPES = ['Punch', 'Kick', 'Throw', 'Lock', 'Choke', 'Power', 'Agility', 'Strength', 'Atk Tech', 'Rough', 'MMA Atk']   # ui.csv 0xb43e0..
@@ -112,7 +116,7 @@ def move_categories(prog, move_index, slot_label, data, dl, dl_base):
     def types(i):
         off, size = struct.unpack_from('<II', data, 8 * first[i])
         assert data[off:off + 2] == b'GS', f'move {i}: no GS block'
-        return data[off + GS_TYPES]
+        return [data[off + o] for o in GS_STATS]
     out = []
     for k in range(n):
         ptr, cnt = struct.unpack_from('<II', prog, table - BASE + 8 * k)
@@ -126,7 +130,7 @@ def move_categories(prog, move_index, slot_label, data, dl, dl_base):
         for j, d in enumerate(dl):
             if d['list'] == k:
                 names.append(dl_base + j)
-                ty.append(d['ty'])
+                ty.append(d['st'])
         out.append({'t': LIST_TITLES[k], 's': [slot_label[sl] for sl in range(78) if by_slot[sl] == k],
                     'inc': -1 if cnt >> 16 == 0xFFFF else cnt >> 16, 'm': names, 'ty': ty, 'k': k})
     merged = []                                 # the same moves twice (Back Rev X and A): one category
@@ -190,7 +194,7 @@ def extras(promos):
         nm = eng.get(slot) or ' '.join(unicodedata.normalize('NFKC', raw).split())
         p = moves_[slot]
         dl.append({'n': slot, 'e': nm, 'src': 'official' if slot <= 56 else 'FPZ',
-                   'list': struct.unpack_from('<H', p, 0)[0], 'ty': p[DL_GS + GS_TYPES]})
+                   'list': struct.unpack_from('<H', p, 0)[0], 'st': [p[DL_GS + o] for o in GS_STATS]})
     ros = []
     if roster_:
         fixed = dlc.roster_fixed(roster_)
@@ -278,7 +282,7 @@ def build():
         'mcat': mcat,
         'mcatRow': mcat_rows,
         'dlBase': dl_base,
-        'atk': [fpdtext.ui_text(prog, a) if hasattr(fpdtext, 'ui_text') else a for a in ATTACK_TYPES],
+        'atk': ATTACK_TYPES,
         'shape': shape,
         'dlMoves': dl,
         'dlRoster': dl_roster,

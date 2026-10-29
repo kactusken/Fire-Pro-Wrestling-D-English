@@ -175,7 +175,20 @@ its moves' names). The move ids are grouped by kind, and Move Edit offers each s
   Power, Agility, Strength, Atk Tech, Rough, MMA Atk - Move Edit's box shows them (American Jab
   0x09 = Punch / Rough, Straight 0x00 = Punch / Punch). The number beside each in that box is the
   wrestler's own rating in the type, and Aff a grade of how the move suits him; the move holds
-  no level. The rest of the block (damage, timing, the motion) is not decoded.
+  no level.
+- *From the data, 2026-10-28* - the same values as Fire Pro World's published move table (the
+  FPW FAQ wiki's 技データ表), matched by Japanese name: of 1063 moves in both games, 792 have all
+  seven damage values the same, every one has the same defence types, 1057 the same attack types
+  (the rest are rows the wiki leaves blank or moves FPW rebalanced). From GS:
+  +0x12 stamina, +0x13 spirit, +0x14 neck, +0x15 arm, +0x16 back, +0x17 leg, +0x18 breath damage;
+  +0x19 bleed chance; +0x1A attack types; +0x1B defence types (Strike Def ... MMA Def, high nibble
+  main); +0x23 flags: 0x80 illegal, 0x40 submission hold, 0x01 can cause a critical (the Finisher
+  type), 0x02 striking, 0x04 suplex, 0x08 submission, 0x10 power, 0x20 technical critical.
+  +0x1C (a class shared by similar moves) and +0x1D..+0x22 (probably the attacker's own damage,
+  FPW's self-damage) are not confirmed. How a match turns these base values into damage (the
+  ratings against the defence ratings) is in code not yet traced: `0x8C048D20` finds a wrestler's
+  move block (via the id table) and returns GS+0x10; the entry is loaded whole at 0x8C7AC2E0
+  (pointer at 0x8C26D0A4).
 - A downloadable move (FIREPROD.Wnn, `tools/dlc.py`) is u16 its Move Edit list, u16 its slot
   number, the name (+8, 44 bytes), then one GS block of the same layout at +0x34. *From the data:*
   the list matches every slot the downloadable wrestlers equip one in.
