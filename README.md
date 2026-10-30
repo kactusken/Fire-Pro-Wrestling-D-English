@@ -73,18 +73,22 @@ You need your own copy of the original Japanese disc. Disc images are not provid
   SHA-1 `c6037b763e59b801101b9538cbf3ec406e14490b`.
 
 Each patch comes as three files: a `.xdelta` for track 50, a `(Track 03).xdelta` for track 3, and
-a `.cue`. Then:
+a `.cue`. The simplest way needs only the two `.xdelta` files:
 
-1. Apply the main `.xdelta` to `(Track 50).bin` and the `(Track 03).xdelta` to `(Track 03).bin`
+1. Make a copy of your disc folder, so the original stays as it is.
+2. Apply the main `.xdelta` to `(Track 50).bin` and the `(Track 03).xdelta` to `(Track 03).bin`
    with an xdelta tool:
    - [Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/) runs in your web browser.
    - Delta Patcher is a desktop app for Windows, macOS and Linux.
    - On the command line: `xdelta3 -d -s "Fire Pro Wrestling D (Japan) (Track 50).bin" "patch.xdelta" "patched.bin"`
-2. Put the two patched files and the patch's `.cue` in the folder with the other original tracks,
-   and name the patched files as the `.cue` does, for example
-   `Fire Pro Wrestling D (English) (Real Names).bin` and
-   `Fire Pro Wrestling D (English) (Real Names) (Track 03).bin`. The other 48 tracks stay as they are.
-3. Open the `.cue` in your emulator. Tested in [Flycast](https://github.com/flyinghead/flycast).
+3. In the copied folder, replace those two tracks with the patched files, keeping the original
+   file names. The other 48 tracks stay as they are.
+4. Open the copied folder's original `.cue` in your emulator. Tested in [Flycast](https://github.com/flyinghead/flycast).
+
+To keep several versions in one folder, sharing the 48 unchanged tracks, use the patch's `.cue`
+instead. Name the patched files as that `.cue` does, for example
+`Fire Pro Wrestling D (English) (Real Names).bin` and
+`Fire Pro Wrestling D (English) (Real Names) (Track 03).bin`, and open it.
 
 ## Notes for players
 

@@ -130,8 +130,10 @@ def tracks_note(rom):
         return ('\n' + textwrap.fill(f'That is the main data track of a {len(other) + 1}-track BIN/CUE image. A '
                                     f'patch whose name ends in "(Track NN)" applies to that track of the original '
                                     f'({", ".join(data)}) in the same way, when a variant has one. Keep the other '
-                                    'tracks and the .cue as they are; the .cue given with each variant names the '
-                                    'patched files (rename yours to match, or change the FILE lines).', 78) + '\n')
+                                    'tracks as they are. The simplest way: in a copy of the disc folder, replace the '
+                                    'patched tracks, keeping their original file names, and open the original .cue. '
+                                    'To keep several variants in one folder, use the .cue given with each variant '
+                                    'and name the patched files as it does.', 78) + '\n')
     return ('\n' + textwrap.fill(f'That is the data track of a {len(other) + 1}-track BIN/CUE image. The patch changes '
                                 f'only this file; keep the other track{"s" if len(other) > 1 else ""} '
                                 f'({", ".join(other)}) and the .cue as they are. If you give the patched file another '
