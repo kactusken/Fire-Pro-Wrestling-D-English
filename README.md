@@ -66,29 +66,22 @@ Get the latest zip from the [Releases](../../releases) page. It contains 5 patch
 
 ## How to patch
 
+**[Follow the step-by-step guide](docs/HOW_TO_PATCH.md).** You patch two of the disc's files with
+[Delta Patcher](https://github.com/marco-calautti/DeltaPatcher/releases), then open the disc's
+original `.cue`. Nothing needs renaming.
+
 You need your own copy of the original Japanese disc. Disc images are not provided here.
 
 - Game: *Fire Pro Wrestling D* (Japan), serial T-18805M, a 50-track BIN/CUE dump (Redump).
-- The main track must match: `Fire Pro Wrestling D (Japan) (Track 50).bin`, 112009296 bytes, CRC32 `c0114432`,
-  SHA-1 `c6037b763e59b801101b9538cbf3ec406e14490b`.
+- The main track must match: `Fire Pro Wrestling D (Japan) (Track 50).bin`, 112009296 bytes,
+  CRC32 `c0114432`, SHA-1 `c6037b763e59b801101b9538cbf3ec406e14490b`.
 
-Each patch comes as three files: a `.xdelta` for track 50, a `(Track 03).xdelta` for track 3, and
-a `.cue`. The simplest way needs only the two `.xdelta` files:
+Other xdelta tools work too, such as [Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/)
+in a web browser or `xdelta3` on the command line, but the patched files must end up with the
+original file names. To keep several versions in one folder, use the patch's `.cue` and name the
+patched files as it does.
 
-1. Make a copy of your disc folder, so the original stays as it is.
-2. Apply the main `.xdelta` to `(Track 50).bin` and the `(Track 03).xdelta` to `(Track 03).bin`
-   with an xdelta tool:
-   - [Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/) runs in your web browser.
-   - Delta Patcher is a desktop app for Windows, macOS and Linux.
-   - On the command line: `xdelta3 -d -s "Fire Pro Wrestling D (Japan) (Track 50).bin" "patch.xdelta" "patched.bin"`
-3. In the copied folder, replace those two tracks with the patched files, keeping the original
-   file names. The other 48 tracks stay as they are.
-4. Open the copied folder's original `.cue` in your emulator. Tested in [Flycast](https://github.com/flyinghead/flycast).
-
-To keep several versions in one folder, sharing the 48 unchanged tracks, use the patch's `.cue`
-instead. Name the patched files as that `.cue` does, for example
-`Fire Pro Wrestling D (English) (Real Names).bin` and
-`Fire Pro Wrestling D (English) (Real Names) (Track 03).bin`, and open it.
+Tested in [Flycast](https://github.com/flyinghead/flycast).
 
 ## Notes for players
 
@@ -127,6 +120,7 @@ the game's formats.
 
 | Document | What's in it |
 |---|---|
+| [docs/HOW_TO_PATCH.md](docs/HOW_TO_PATCH.md) | The simplest way to patch your disc, with no renaming |
 | [docs/BUILDING.md](docs/BUILDING.md) | Setting up, building, making patches, and the checking tools |
 | [docs/TRANSLATION.md](docs/TRANSLATION.md) | Text file formats, scope, style guide, glossary, and naming decisions |
 | [docs/EDITING.md](docs/EDITING.md) | Editing the in-game text graphics |
