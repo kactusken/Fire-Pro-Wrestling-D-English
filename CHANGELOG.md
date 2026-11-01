@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.1
+- Fixed the Ring setting in match setup: most ring names showed as fragments ("JAPAN", "N",
+  "ToryBIG JAPAN") or wrong entries, in every English patch. All 18 now read correctly, with the
+  real names in the Real Names patches.
+- Fixed the two other names the same bug damaged: the country Tonga and the first music title.
+- Shortened two music titles that ran off the Match Music field: "FujiHawkEggplant" and "Musashi
+  Dynamic" ("Inoki Dynamic" in the Real Names patches).
+
 ## v1.0 (first release)
 - Complete English translation: every menu and mode, help lines and messages, match settings,
   results, Title Match, league and tournament screens, Victory Road Kai, Options and Memory Card.

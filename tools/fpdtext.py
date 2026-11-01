@@ -12,9 +12,11 @@ Where the text is (verified 2026-10-27, docs/TECHNICAL.md "Text"):
   pointers (code literal pools and pointer tables). Every string the table lists has pointers, so
   the build repacks them: English that fits stays in its slot, longer English goes into the room
   shorter strings leave, and every pointer is updated. Left out: pure-ASCII strings (debug, file
-  names), the name-entry keyboard rows (0xB762C-0xB97EC), the save-file labels (fixed.csv).
+  names) except the RINGS, the name-entry keyboard rows (0xB762C-0xB97EC), the save-file labels
+  (fixed.csv).
 - fixed.csv: strings written in place, never moved (no pointers, or copied into fixed fields):
   save-file labels (VMU 16 / file manager 32 bytes), referees, the built-in names in 1ST_READ.
+  Never a string of the repacked pool: step_ui refuses that (it would overwrite what moved there).
 - wrestlers.csv: the roster - 220 records of 504 bytes, SBL.BIN entry 2 (LZSS) and the same
   records again in entry 1 at +0x14 (both written). Fields: +1 order/separator flags, +2 name1
   (14 bytes), +0x10 name2 (20), +0x24 nickname (26).
@@ -48,10 +50,10 @@ REFEREES = (0x11920C, 0x9E, 8, 2, 18)          # first record, stride, count, na
 FIXED_MORE = [(0x11D672, 14, 'built-in edit wrestler: name1'), (0x11D680, 20, 'built-in edit wrestler: name2'),
               (0x11D694, 26, 'built-in edit wrestler: nickname'), (0x11D8BC, 18, 'ヴァイル record (unknown use)'),
               (0x11D8F8, 18, 'ヴァイル record, referee-like (unknown use)'),
-              (0x130A9C, 26, 'game title in a save header (unknown use)'),
-              # ring names already in English in the original (Ring setting); real names by token
-              (0xB2974, 12, 'ring name'), (0xB2980, 12, 'ring name'), (0xB298C, 16, 'ring name'),
-              (0xB29B8, 12, 'ring name'), (0xB29E8, 8, 'ring name'), (0xB2A24, 4, 'ring name')]
+              (0x130A9C, 26, 'game title in a save header (unknown use)')]
+# ring names already in English in the original (Ring setting, table 0x118BA8): pure ASCII, but
+# they are in the pool and move with it, so they go through ui.csv like the Japanese ring names
+RINGS = (0xB2970, 0xB2974, 0xB2980, 0xB298C, 0xB29B8, 0xB29E8, 0xB2A1C, 0xB2A24)
 PROMOTIONS = ((0x1188D8, 0x1A, 18, 26, 'promotion name (header box ~11 letters, uppercase like the originals)'),
               (0x118AAC, 0x0E, 18, 14, 'promotion short name (3-6 letters)'))
 ROSTER_ENTRIES = ((2, 0), (1, 0x14))            # (SBL entry, offset of record 0 in its data)
@@ -176,7 +178,7 @@ def ui_strings(d, ptrs=None):
     """[(offset, slot bytes, raw bytes, text, pointers)] of the pool strings (ui.csv)."""
     ptrs = pointer_map(d) if ptrs is None else ptrs
     return [(i, slot, raw, text, ptrs[i]) for i, slot, raw, text in _candidates(d, ptrs)
-            if any(ord(c) > 0x7F for c in text)]
+            if i in RINGS or any(ord(c) > 0x7F for c in text)]
 
 
 def pool_slots(d, ptrs=None):
@@ -549,10 +551,14 @@ def step_ui(files, names='real'):
         print(f'text: ui.csv {len(eng)} strings; pool {need}/{room} bytes, aligned to {align}')
     d = bytearray(d)
     fixed = {int(r['offset'], 16): r for r in _csv_rows('fixed.csv')}
+    pool = pool_slots(orig)
     n = 0
     for o, r in fixed.items():
         if not r.get('english'):
             continue
+        if any(a <= o < a + slot for a, slot in pool):
+            sys.exit(f'fixed.csv {r["offset"]}: this string is in the repacked pool, so writing it in '
+                     'place overwrites what moved there - give it a row in ui.csv instead')
         b = encode(resolve(r['english'], names, f'fixed.csv {r["offset"]}', tokens), f'fixed.csv {r["offset"]}')
         room = int(r['max_bytes'])
         if len(b) > room:

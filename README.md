@@ -18,7 +18,7 @@ save files needed.
 
 **[See screenshots](docs/SCREENSHOTS.md)** of the patched game. **[Read the guide](https://kactusken.github.io/Fire-Pro-Wrestling-D-English/guide/)**: controls, every mode, Edit Mode, all 220 wrestlers, the 50 downloadable ones and every move, and the secrets.
 
-> **Status: v1.0, complete.** Tested in Flycast over several rounds, including every Victory Road
+> **Status: v1.1, complete.** Tested in Flycast over several rounds, including every Victory Road
 > ending. The network mode could only be checked offline: Sega's servers are gone, so the online
 > pages can't be reached. Loading saves made with the Japanese game hasn't been tested yet. Please
 > report anything that looks wrong ([how to report](#reporting-problems)).
@@ -136,7 +136,7 @@ Quick start:
 ```sh
 python3 tools/extract.py                 # unpack the disc in rom/ into extracted/
 python3 build.py                         # -> build/Fire Pro Wrestling D (English).bin
-python3 make_patches.py --version v1.0   # -> release/*.xdelta and a zip (needs xdelta3)
+python3 make_patches.py --version v1.1   # -> release/*.xdelta and a zip (needs xdelta3)
 ```
 
 ## AI disclosure

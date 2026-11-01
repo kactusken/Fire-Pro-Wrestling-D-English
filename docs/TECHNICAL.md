@@ -132,7 +132,17 @@ English (the match-type box widens).
 
 Insertion (`tools/fpdtext.py`, build steps): the pool of every pointer-referenced string in the
 region (27,415 bytes) is repacked in order with 4-byte alignment and every pointer updated; English
-takes 23,151 bytes of it (2026-10-27). Fixed fields (save labels, referees) are written in place.
+takes 23,151 bytes of it (2026-10-27). Fixed fields (save labels, referees) are written in place,
+and only those: a string in the pool moves, so writing it at its old offset damages what moved
+there (the build now refuses it).
+
+**Ring setting** (*seen headless, 2026-11-01*): 18 names from the pointer table 0x118BA8, by the
+routine 0x8C016756 (from the code; ids from 18 are edit promotions). Six are plain ASCII in the
+original but still pool strings, so all eight ASCII ones (`RINGS`) are in ui.csv.
+
+**Match Music** (*seen headless, 2026-11-01*): 12 titles from the pointer table 0x118BF0, then
+RANDOM. The value is centred at x=480 and the panel clips it past x=616, so 272 px on screen
+(`rooms.csv`). The Japanese is at most 258 px wide.
 The roster goes into SBL entries 1 and 2, the move names into entry 1 (both recompressed).
 Text in pictures: the main menu labels, the wrestler profile tags, the elimination order boards and
 the result banners are PVR textures (graphics.csv, tools/gfx.py).

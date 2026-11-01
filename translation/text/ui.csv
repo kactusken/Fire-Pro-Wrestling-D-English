@@ -38,18 +38,26 @@ offset,ram,refs,max_bytes,jp_px,japanese,english,notes
 0xb294c,0x8c0c294c,1,11,132,ボﾂﾜﾅ共和国,Botswana,
 0xb2958,0x8c0c2958,1,15,144,南ｱﾌﾘｶ共和国,South Africa,
 0xb2968,0x8c0c2968,1,7,48,ﾄﾝガ,Tonga,
+0xb2970,0x8c0c2970,1,3,57,SWA,SWA,ring name (Ring setting)
+0xb2974,0x8c0c2974,1,11,172,VIEW JAPAN,<VIEW JAPAN>,ring name (Ring setting): real name in the real build
+0xb2980,0x8c0c2980,1,11,183,OLIVE JAPAN,<OLIVE JAPAN>,ring name (Ring setting): real name in the real build
+0xb298c,0x8c0c298c,1,11,175,SUPER NOVA,<SUPER NOVA>,ring name (Ring setting): real name in the real build
 0xb2998,0x8c0c2998,1,7,77,新生IW,<New IW>,
 0xb29a0,0x8c0c29a0,1,15,156,ゆきぐにプﾛﾚｽ,<Yukiguni> Pro,
 0xb29b0,0x8c0c29b0,2,7,72,超竜館,<Choryukan>,
+0xb29b8,0x8c0c29b8,1,11,148,ZIP JAPAN,<ZIP JAPAN>,ring name (Ring setting): real name in the real build
 0xb29c4,0x8c0c29c4,1,11,108,関西プﾛﾚｽ,<Kansai Pro>,
 0xb29d0,0x8c0c29d0,1,11,121,WFWプﾛﾚｽ,<WFW>,
 0xb29dc,0x8c0c29dc,1,11,122,WWCプﾛﾚｽ,<WWC>,
+0xb29e8,0x8c0c29e8,1,7,131,THREE-A,<THREE-A>,ring name (Ring setting): real name in the real build
 0xb29f0,0x8c0c29f0,1,7,72,ゴﾝグｽ,<GONGS>,
 0xb29f8,0x8c0c29f8,1,7,60,ﾊｲｸﾗｽ,<High Class>,
 0xb2a00,0x8c0c2a00,1,19,216,格闘探検隊バﾄﾚｰｼｮﾝ,<Battlation>,
 0xb2a14,0x8c0c2a14,1,7,48,女子,Women,
-0xb2a28,0x8c0c2a28,1,19,235,武蔵 DynamicVer.,<Musashi> Dynamic Ver,
-0xb2a7c,0x8c0c2a7c,1,23,240,壱富士、弐鷹、参茄子,"Fuji, Hawk, Eggplant",
+0xb2a1c,0x8c0c2a1c,1,7,89,BLADE,BLADE,ring name (Ring setting)
+0xb2a24,0x8c0c2a24,1,3,58,UWH,<UWH>,ring name (Ring setting): real name in the real build
+0xb2a28,0x8c0c2a28,1,19,235,武蔵 DynamicVer.,<Musashi> Dynamic,
+0xb2a7c,0x8c0c2a7c,1,23,240,壱富士、弐鷹、参茄子,FujiHawkEggplant,
 0xb2ab4,0x8c0c2ab4,1,19,222,Shine”N”Knight,"Shine ""N"" Knight",
 0xb2ae0,0x8c0c2ae0,1,11,160,氷川 F.P.G.,<Hikawa> FPG,
 0xb2aec,0x8c0c2aec,1,11,96,ｳﾗｶﾝ・ﾗﾅ,Huracanrana,

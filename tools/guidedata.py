@@ -271,7 +271,7 @@ def build():
                 'group': 'Wrestler', 'text': f'{promos[r["p"]][0]} - finisher {r["f"][0]}'}
                for k, r in enumerate(ros)]
     prose = {'ring1': '<VIEW JAPAN>', 'ring2': '<OLIVE JAPAN>', 'ring3': '<SUPER NOVA>', 'ref0': '<Tottori>',
-             'bgm0': '<Musashi> Dynamic Ver', 'panther': '<Panther*>'}     # names in the guide's text
+             'bgm0': '<Musashi> Dynamic', 'panther': '<Panther*>'}     # names in the guide's text
     return {
         'names': {k: _both(v, tokens, f'names {k}') for k, v in prose.items()},
         'entries': entries,
